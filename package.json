@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "mongodb": "^6.9.0",
+    "nodemon": "^3.1.7"
+  },
+  "name": "soham-exam",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

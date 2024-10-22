@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/createdata" method="post">
+        <label for="f_name">First Name:</label>
+        <input type="text" id="f_name" name="f_name" value="<%= edit ? edit.f_name : '' %>"><br><br>
+    
+        <label for="l_name">Last Name:</label>
+        <input type="text" id="l_name" name="l_name" value="<%= edit ? edit.l_name : '' %>"><br><br>
+    
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="male" <%= (edit && edit.gender === 'male') ? 'checked' : '' %>> Male
+        <input type="radio" name="gender" value="female" <%= (edit && edit.gender === 'female') ? 'checked' : '' %>> Female<br><br>
+    
+        <label>Hobby:</label><br>
+        <input type="checkbox" name="hobby" value="cricket" <%= edit && edit.hobby.includes('cricket') ? 'checked' : '' %>> Cricket<br>
+        <input type="checkbox" name="hobby" value="hockey" <%= edit && edit.hobby.includes('hockey') ? 'checked' : '' %>> Hockey<br>
+        <input type="checkbox" name="hobby" value="football" <%= edit && edit.hobby.includes('football') ? 'checked' : '' %>> Football<br>
+        <input type="checkbox" name="hobby" value="kabaddi" <%= edit && edit.hobby.includes('kabaddi') ? 'checked' : '' %>> Kabaddi<br>
+        <input type="checkbox" name="hobby" value="wrestling" <%= edit && edit.hobby.includes('wrestling') ? 'checked' : '' %>> Wrestling<br>
+        <input type="checkbox" name="hobby" value="driving" <%= edit && edit.hobby.includes('driving') ? 'checked' : '' %>> Driving<br><br>
+    
+        <label for="city">City:</label>
+        <select id="city" name="city">
+            <option value="surat" <%= edit && edit.city === 'surat' ? 'selected' : '' %>>Surat</option>
+            <option value="ahmedabad" <%= edit && edit.city === 'ahmedabad' ? 'selected' : '' %>>Ahmedabad</option>
+            <option value="vadodara" <%= edit && edit.city === 'vadodara' ? 'selected' : '' %>>Vadodara</option>
+            <option value="bhavnagar" <%= edit && edit.city === 'bhavnagar' ? 'selected' : '' %>>Bhavnagar</option>
+            <option value="rajkot" <%= edit && edit.city === 'rajkot' ? 'selected' : '' %>>Rajkot</option>
+            <option value="mumbai" <%= edit && edit.city === 'mumbai' ? 'selected' : '' %>>Mumbai</option>
+        </select><br><br>
+    
+        <button type="submit">Submit</button>
+    </form>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Hobby</th>
+                <th>City</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% alldata.forEach(item => { %>
+                <tr>
+                    <td><%= item._id %></td>
+                    <td><%= item.f_name %></td>
+                    <td><%= item.l_name %></td>
+                    <td><%= item.gender %></td>
+                    <td><%= item.hobby %></td>
+                    <td><%= item.city %></td>
+                    <td><button><a href="/deletedata?delete=<%= item._id %>">Delete</a></button></td>
+                    <td><button><a href="/Editdata?edit1=<%= item._id %>">Edit</a></button></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

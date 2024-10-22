@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/add" method="post">
+        <table border="1px">
+            <tr>
+                <td>
+                    Name:<input type="text" name="name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Surname<input type="text" name="surname">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password:<input type="password" name="password">
+                </td>
+                <td>
+                    <input type="submit" name="password">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <table border="1px">
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>surname</td>
+            <td>password</td>
+            <td>add</td>
+
+            <% data.map((item,index)=> { %>
+        <tr>
+            <td>
+                <%= item._id%>
+            </td>
+            <td>
+                <%= item.name %>
+            </td>
+            <td>
+                <%= item.surname %>
+            </td>
+            <td>
+                <%= item.password %>
+            </td>
+            <td>
+                <button><a href="/deleteId?delete=<%= item._id %>">Delete</a></button>
+                <button><a href="/update?up=<%= item._id %>">Edit</a></button>
+            </td>
+        </tr>
+        <% }) %>
+
+    </table>
+</body>
+
+
+
+</html>
